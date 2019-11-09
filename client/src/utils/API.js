@@ -1,7 +1,13 @@
 import axios from "axios";
 
-export default {
+const request = {
     getProduct: function(productId) {
-        return axios.get("/api/products/" + productId);
+        // return `http://localhost:3001/api/products/${productId}`;
+        return axios.get(`/api/inventory/${productId}`);
+    },
+    getAllProducts: function() {
+        return axios.get(`/api/products`);
     }
 }
+
+export default request;

@@ -23,5 +23,3 @@ db.sequelize.sync(syncOptions).then(() => {
         console.log(`🌎  Listening on port ${PORT}. Visit http://localhost:${PORT}/ in your browser.`)
     });
 });
-
-// // npm run start:prod || 
