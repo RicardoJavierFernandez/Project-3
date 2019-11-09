@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-var syncOptions = { force: true }; // change to true if we want to override the current database
+var syncOptions = { force: false }; // change to true if we want to override the current database
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('public'));
