@@ -6,7 +6,7 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 
-class Forecast extends Component {
+class ForecastDetail extends Component {
     constructor(props) {
         super(props);
 
@@ -81,13 +81,17 @@ submitAssumptions = (e) => {
                 <Table striped bordered hover size="sm">
                     <thead>
                         <tr>
-                        <th>Assumption</th>
-                        <th>Input</th>
+                        <th>Product</th>
+                        <th>Units Order</th>
+                        <th>Total Order</th>
+                        <th>Master Carton</th>
+                        <th>Sales Growth</th>
+                        <th>Lead Time</th>
+                        <th>Order Amount</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Product</td>
+                        <tr>
                         <td>
                             {this.state.products.length ? (
                                 <select id="products">
@@ -95,47 +99,29 @@ submitAssumptions = (e) => {
                                     <option key={index} value={product} id={product}>Product {product}</option>
                                 )}
                                 </select>
-                            ) : (<strong>No options</strong>)}
+                            ) : (<strong>No Products</strong>)}
                         </td>
-                        </tr>
-                        <tr>
-                            <td>Units Order</td>
-                            <td>
-                                <input type="text" name="unitsOrder"placeholder="Units Ordered" onChange={this.handleChange}></input>
-                            </td>
-                        </tr>
-                        <tr>
-                        <td>Total Orders</td>
-                            <td>
-                                <input type="text" name="totalOrder"placeholder="Total Orders" onChange={this.handleChange}></input>
-                            </td>
-                        </tr>
-                        <tr>
-                        <td>Master Carton</td>
-                            <td>
-                                <input type="text" name="masterCarton" placeholder="Master Carton" onChange={this.handleChange}></input>
-                            </td>
-                        </tr>
-                        <tr>
-                        <td>Sales Growth</td>
-                            <td>
-                                <input type="text" name="salesGrowth" placeholder="Sales Growth" onChange={this.handleChange}></input>
-                            </td>
-                        </tr>
-                        <tr>
-                        <td>Lead Time</td>
-                            <td>
-                                <input type="text" name="leadTime" placeholder="Lead Time" onChange={this.handleChange}></input>
-                            </td>
-                        </tr> 
-                        <tr>
-                        <td><strong>Order Amount</strong></td>
+                        <td>
+                            <input type="text" name="unitsOrder"placeholder="Units Ordered" onChange={this.handleChange}></input>
+                        </td>
+                        <td>
+                            <input type="text" name="totalOrder"placeholder="Total Orders" onChange={this.handleChange}></input>
+                        </td>
+                        <td>
+                            <input type="text" name="masterCarton" placeholder="Master Carton" onChange={this.handleChange}></input>
+                        </td>
+                        <td>
+                            <input type="text" name="salesGrowth" placeholder="Sales Growth" onChange={this.handleChange}></input>
+                        </td>
+                        <td>
+                            <input type="text" name="leadTime" placeholder="Lead Time" onChange={this.handleChange}></input>
+                        </td>
                         {this.state.orderAmount > 0 ?
                         <td  className="alert-success" onClick={() => alert('Order now!')}>    
-                            <strong >Click to order {this.state.orderAmount} master cartons</strong> 
+                            <strong >{this.state.orderAmount}</strong> 
                         </td>
-                        : <td><strong>--</strong></td>}
-                        </tr> 
+                        : <td><strong></strong></td>}
+                        </tr>
                     </tbody>
                 </Table>
                 <Button variant="success" onClick={this.submitAssumptions}>Calculate</Button>
@@ -145,4 +131,4 @@ submitAssumptions = (e) => {
     }
 }
 
-export default Forecast;
+export default ForecastDetail;

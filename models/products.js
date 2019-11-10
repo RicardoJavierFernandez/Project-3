@@ -16,6 +16,10 @@ module.exports = function(sequelize, DataTypes) {
         product_name: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        master_carton: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
     },
     {

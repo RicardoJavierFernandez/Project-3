@@ -2,13 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Forecast from './views/Forecast';
+import ForecastDetail from './views/ForecastDetail';
 
 function App() {
   return (
     <Router>
       <div>
-        <Forecast />
+        <ForecastDetail />
       </div>
     </Router>
   );
