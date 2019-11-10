@@ -138,8 +138,9 @@ submitAssumptions = (e) => {
                         {this.state.orderAmount > 0 ?
                         <td  className="alert-info" onClick={() => alert('Order now!')}>    
                             <strong>{this.state.orderAmount}</strong> 
-                        </td>
-                        : <td><strong><input type="checkbox" /></strong></td>}
+                        </td> 
+                        : <td><strong>{this.state.orderAmount}</strong></td>}
+
                         </tr>
                     </tbody>
                 </Table>
