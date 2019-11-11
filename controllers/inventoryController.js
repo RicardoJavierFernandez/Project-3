@@ -13,7 +13,7 @@ module.exports = {
     findById: function(req, res) {
         db.Inventory.findOne({
             where: {
-                id: req.params.id
+                product_id: req.params.id
             }
         })
         .then((dbInventory) => {

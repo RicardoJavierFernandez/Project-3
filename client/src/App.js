@@ -1,11 +1,14 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import ForecastDetail from './views/ForecastDetail';
 
 function App() {
   return (
     <Router>
       <div>
-        <h1>Testing!!!</h1>
+        <ForecastDetail />
       </div>
     </Router>
   );
