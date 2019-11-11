@@ -3,12 +3,13 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import ForecastDetail from './views/ForecastDetail';
+import CreateOrder from './views/CreateOrder';
 
 function App() {
   return (
     <Router>
       <div>
-        <ForecastDetail />
+        <CreateOrder />
       </div>
     </Router>
   );
