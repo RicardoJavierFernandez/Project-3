@@ -1,4 +1,5 @@
 'use strict';
+User: require('./user')
 
 const fs = require('fs');
 const path = require('path');
