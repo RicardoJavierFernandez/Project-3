@@ -24,7 +24,6 @@ module.exports = {
         });
     },
     create: function(req, res) {
-        console.log(req.body);
         db.sequelize.transaction(function(t) {
             return db.Transactions.create(
             {transaction_type_id: req.body.transaction_type_id}, 

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import API from '../utils/API';
 
 import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
@@ -28,7 +29,7 @@ class CreateOrder extends Component {
     getProducts = () => {
         API.getAllProducts()
             .then((dbResponse) => {
-                this.setState({products: dbResponse.data}, () => console.log(this.state.products));
+                this.setState({products: dbResponse.data});
             });
     }
 
@@ -38,7 +39,6 @@ class CreateOrder extends Component {
     }
 
     handleInputChange = (e) => {
-        e.persist();
 
         this.setState({[e.target.name]: e.target.value});
     }
@@ -59,21 +59,36 @@ class CreateOrder extends Component {
             quantity: this.state.quantity, 
             price: this.state.price
         })
-        .then((dbResponse) => console.log(dbResponse))
-        .catch((err) => console.log(err))
+        .then((dbResponse) => {
+            console.log(dbResponse);
+            this.setState({price:'', quantity:''}, () => {
+                document.getElementById('price').value = "";
+                document.getElementById('quantity').value = "";
+            })
+        })
+        .catch((err) => alert('There was an error!', err))
         );
     }
 
     render() {
+        // Enable boolean for the button
+        const isEnabled = this.state.price > 0 && this.state.quantity > 0;
         return (
             <div>
-                <Container expand="md">
+                <Container>
+                    <Col md={{ span: 4, offset: 4 }}>
                     <Form>
                     <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Transaction Type</Form.Label>
                             <Form.Control as="select" id="transactionSelection">
                                 {this.state.transTypes.map((transType, index) => 
-                                    <option key={index} value={transType.transaction_name} id={transType.transaction_type_id}>{transType.transaction_type}</option>
+                                    <option 
+                                        key={index} 
+                                        value={transType.transaction_name} 
+                                        id={transType.transaction_type_id}
+                                    >
+                                        {transType.transaction_type}
+                                    </option>
                                 )}
                             </Form.Control>
                         </Form.Group>
@@ -81,18 +96,25 @@ class CreateOrder extends Component {
                             <Form.Label>Product SKU</Form.Label>
                             <Form.Control as="select" id="productSelection">
                             {this.state.products.map((product, index) => 
-                                <option key={index} value={product.product_name} id={product.product_id}>{product.product_sku}</option>
+                                <option 
+                                    key={index} 
+                                    value={product.product_name} 
+                                    id={product.product_id}
+                                >
+                                    {product.product_sku}
+                                </option>
                             )}
                             </Form.Control>
                         </Form.Group>
                         <Form.Group controlId="exampleForm.ControlTextarea1">
                             <Form.Label>Price</Form.Label>
-                            <Form.Control type="text" rows="1" name="price" onChange={this.handleInputChange} />
+                            <Form.Control type="text" rows="1" name="price" id= "price" onChange={this.handleInputChange} />
                             <Form.Label>Quantity</Form.Label>
-                            <Form.Control type="text" rows="1" name="quantity" onChange={this.handleInputChange} />
+                            <Form.Control type="text" rows="1" name="quantity" id="quantity" onChange={this.handleInputChange} />
                         </Form.Group>
                     </Form>
-                    <Button variant="success" onClick={this.submitOrder}>Order Now</Button>
+                    <Button disabled={!isEnabled} variant="success" onClick={this.submitOrder}>Order Now</Button>
+                    </Col>
                 </Container>
             </div>
         )
