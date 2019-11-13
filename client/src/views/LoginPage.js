@@ -23,9 +23,9 @@ class RegistrationForm extends Component {
     }
     
     register = () => {
-        API.registerUser(this.state.name, this.state.email.toLowerCase(), this.state.password)
+        API.registerUser(this.state.name, this.state.email, this.state.password)
             .then((session) => {
-                // this.props.onRegister(session.data)
+                console.log(session);
                 console.log('Success!');
             });
     }
@@ -36,20 +36,6 @@ class RegistrationForm extends Component {
     render () {
         return (
             <Container>
-                <Col md={{ span: 4, offset: 4 }}>
-                    <Form.Control 
-                        type="text" 
-                        rows="1" 
-                        value={this.state.name} 
-                        name="name" 
-                        id= "name" 
-                        placeholder="Enter your Name" 
-                        onChange={this.inputChangeHandler} 
-                    />
-                </Col>
-                
-                <br />
-                
                 <Col md={{ span: 4, offset: 4 }}>
                     <Form.Control 
                         type="text" 
