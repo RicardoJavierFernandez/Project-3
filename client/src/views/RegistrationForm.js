@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
+import Jumbotron from 'react-bootstrap/Jumbotron'
 
 
 class RegistrationForm extends Component {
@@ -25,7 +26,8 @@ class RegistrationForm extends Component {
     register = () => {
         API.registerUser(this.state.name, this.state.email.toLowerCase(), this.state.password)
             .then((session) => {
-                // this.props.onRegister(session.data)
+                console.log(this.props);
+                this.props.onRegister(session.data);
                 console.log('Success!');
             });
     }
@@ -35,7 +37,14 @@ class RegistrationForm extends Component {
 
     render () {
         return (
+
             <Container>
+                <Jumbotron>
+                    <Container>
+                        <h2>Registration Form</h2>
+                        <p>Enter your information below</p>
+                    </Container>
+                </Jumbotron>
                 <Col md={{ span: 4, offset: 4 }}>
                     <Form.Control 
                         type="text" 

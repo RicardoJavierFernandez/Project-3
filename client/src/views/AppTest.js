@@ -4,29 +4,31 @@ import Homepage from './containers/Homepage';
 import Client from './containers/Client';
 import Login from './conatiners/LoginPage';
 import Registration from './conatiners/Registration';
+
 class App extends Component {
     constructor (props)
     {
         SourceBuffer(props);
-        this.state={
+        this.state = {
             session:null
         }
     }
+    
     signIn = (session) => this.setState({session});
 
-    render () {
+    render() {
 
     return (
         <Router>
         <Switch>
-        <Route path ="/" component = {client} />
+        <Route path ="/" component = {Registration} />
             {!this.state.session && <Route path ="/login" component = {()=> <Login onlogin= {this.signIn}/>} />}
             {!this.state.session && <Route path ="/register" component = {()=> <Registration onRegister= {this.signIn}/>} />}
         <Route component= {()=> <Homepage session= {this.state.session}/>}/>
         </Switch>
         </Router>
     )
-}
+    }
 }
 
 export default App;
