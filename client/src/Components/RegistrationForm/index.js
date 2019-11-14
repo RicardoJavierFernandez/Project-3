@@ -3,7 +3,7 @@ import RegistrationForm from 'components/RegistrationForm'
 import Api from '../..utils/api'
 
 
-class LoginFrorm extends Component
+class LoginForm extends Component
 {
     constructor (props)
     {

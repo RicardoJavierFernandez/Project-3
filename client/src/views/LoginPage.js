@@ -35,7 +35,17 @@ class RegistrationForm extends Component {
 
     render () {
         return (
+
+            
+           
             <Container>
+                <Jumbotron >
+                    <Container>
+                        
+                        <h2>Login Form</h2>
+                        <p>Enter your information below</p>
+                    </Container>
+                </Jumbotron>
                 <Col md={{ span: 4, offset: 4 }}>
                     <Form.Control 
                         type="text" 

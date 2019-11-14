@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Jumbotron from 'react-bootstrap/Jumbotron'
+import '../Components/RegistrationForm/style.css'
 
 
 class RegistrationForm extends Component {
@@ -39,10 +40,11 @@ class RegistrationForm extends Component {
         return (
 
             <Container>
-                <Jumbotron>
+                <Jumbotron className= "jumbo" bg="primary" variant="light">
                     <Container>
-                        <h2>Registration Form</h2>
-                        <p>Enter your information below</p>
+                        
+                        <h2 >Registration Form</h2>
+                        <p class="lead">Enter your information below</p>
                     </Container>
                 </Jumbotron>
                 <Col md={{ span: 4, offset: 4 }}>
