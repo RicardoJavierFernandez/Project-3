@@ -4,11 +4,12 @@ import Homepage from './containers/Homepage';
 import Client from './containers/Client';
 import Login from './conatiners/LoginPage';
 import Registration from './conatiners/Registration';
+
 class App extends Component {
     constructor (props)
     {
         SourceBuffer(props);
-        this.state={
+        this.state = {
             session:null
         }
     }
