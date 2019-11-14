@@ -1,5 +1,5 @@
-import React, {Component} from './node_modules/react';
-import LoginForm from './node_modules/components/LoginForm'
+import React, {Component} from 'react';
+import LoginForm from 'components/LoginForm'
 import Api from '../..utils/api'
 
 
