@@ -6,8 +6,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // import Login from '../../client/src/containers/LoginPage';
 // import Homepage from '../../client/src/containers/HomePage';
+import Login from '../src/containers/loginPage'
+import Registration from '../src/containers/Registration';
 import CreateOrder from './views/CreateOrder';
-import Registration from '../../client/src/containers/Registration';
 import ForecastDetail from './views/ForecastDetail';
 
 
@@ -26,8 +27,8 @@ class App extends Component {
         <Router>
         <Switch>
         {/* <Route path ="/" component = {CreateOrder} /> */}
-            {/* {!this.state.session && <Route path ="/login" component = {()=> <Login onlogin= {this.signIn}/>} />} */}
-        {!this.state.session && <Route path ="/register" component = {()=> <Registration onRegister= {this.signIn}/>} />}
+        {!this.state.session && <Route path ="/login" component = {()=> <Login onLogin={this.signIn}/>} />}
+        {!this.state.session && <Route path ="/register" component = {()=> <Registration onRegister={this.signIn}/>} />}
         <Route path="/createorders" component = {() => <CreateOrder session= {this.state.session} />}/>
         <Route path="/createorders" component = {() => <CreateOrder session= {this.state.session} />}/>
         <Route path="/forecast" component={() => <ForecastDetail session={this.state.session} />} />

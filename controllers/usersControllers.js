@@ -3,9 +3,9 @@ const md5 = require("md5");
 
 const getSession = (account) => {
     return {
-        id:account_id,
-        name:account.name,
-        token:md5(account.email+account.date)
+        id: account.user_id,
+        name: account.name,
+        token: md5(account.email + new Date())
     }
 }
 
@@ -35,7 +35,7 @@ module.exports = {
         
         db.Users.create(account)
             .then(() => {
-                res.json({'message': 'You successfully signed up'});
+                res.json({'message': 'You successfully registered'});
             })
             .catch((err) => {
                 res.status(422).json(err);
@@ -55,18 +55,22 @@ module.exports = {
         });
     },
     login: function(req, res) {
-        db.Users.findone({
-          email: req.body.email.toLowerCase()
+        db.Users.findOne({
+            where: {
+                email: req.body.email.toLowerCase()
+            }
         })
-        .then((dbModel) => {
-          if (dbModel.password == md5(req.body.password))
-          {
-              res.json(getSession(dbModel))
-          }
-          else {
-            res.sendStatus(401)
-          }
+        .then((dbUsers) => {
+            if (dbUsers.password == md5(req.body.password)) {
+                res.json(getSession(dbUsers));
+            }
+            else {
+                res.sendStatus(401)
+            }
         })
-        .catch(err => res.status(422).json(err));
+        .catch((err) => {
+            console.log(err);
+            res.status(422).json(err)
+        }); 
     }
 }

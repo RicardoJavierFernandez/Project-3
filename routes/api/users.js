@@ -5,6 +5,6 @@ router.route('/')
     .post(usersController.create);
 
 router.route('/login')
-    .post(usersController.findByEmail);
+    .post(usersController.login);
 
 module.exports = router;

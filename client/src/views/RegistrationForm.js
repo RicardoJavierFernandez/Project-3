@@ -26,7 +26,6 @@ class RegistrationForm extends Component {
     register = () => {
         API.registerUser(this.state.name, this.state.email.toLowerCase(), this.state.password)
             .then((session) => {
-                console.log(this.props);
                 this.props.onRegister(session.data);
                 console.log('Success!');
             });

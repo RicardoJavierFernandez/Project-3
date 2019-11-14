@@ -2,7 +2,6 @@ import axios from "axios";
 
 const request = {
     getProduct: function(productId) {
-        // return `http://localhost:3001/api/products/${productId}`;
         return axios.get(`/api/inventory/${productId}`);
     },
     getAllProducts: function() {
@@ -14,7 +13,7 @@ const request = {
     createOrder: function(orderData) {
         return axios.post('/api/transactions', orderData);
     },
-    login: function(email,password) {
+    login: function(email, password) {
         return axios.post('/api/users/login', {
             email: email,
             password: password
