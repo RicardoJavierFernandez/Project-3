@@ -13,21 +13,22 @@ class App extends Component {
             session:null
         }
     }
+    
     signIn = (session) => this.setState({session});
 
-    render () {
+    render() {
 
     return (
         <Router>
         <Switch>
-        <Route path ="/" component = {client} />
+        <Route path ="/" component = {Registration} />
             {!this.state.session && <Route path ="/login" component = {()=> <Login onlogin= {this.signIn}/>} />}
             {!this.state.session && <Route path ="/register" component = {()=> <Registration onRegister= {this.signIn}/>} />}
         <Route component= {()=> <Homepage session= {this.state.session}/>}/>
         </Switch>
         </Router>
     )
-}
+    }
 }
 
 export default App;
