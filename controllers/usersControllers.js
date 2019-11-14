@@ -64,13 +64,12 @@ module.exports = {
             if (dbUsers.password == md5(req.body.password)) {
                 res.json(getSession(dbUsers));
             }
-            else {
-                res.sendStatus(401)
+            else { 
+                res.sendStatus(401);
             }
-        })
+        }) 
         .catch((err) => {
-            console.log(err);
-            res.status(422).json(err)
+            res.status(422).json(err);
         }); 
     }
 }

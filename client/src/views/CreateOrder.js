@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import API from '../utils/API';
 
+import NavBar from '../components/NavBar';
+
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -73,8 +75,12 @@ class CreateOrder extends Component {
     render() {
         // Enable boolean for the button
         const isEnabled = this.state.price > 0 && this.state.quantity > 0;
+
+        // if(this.props.session) {
         return (
             <div>
+                <NavBar></NavBar>
+                <br />
                 <Container>
                     <Col md={{ span: 4, offset: 4 }}>
                     <Form>
@@ -117,8 +123,13 @@ class CreateOrder extends Component {
                     </Col>
                 </Container>
             </div>
-        )
-    }
+        )}
+    //     else {
+    //         return (
+    //             <h3>Unauthorized Access</h3>
+    //         )
+    //     }
+    // }
 }
 
 export default CreateOrder;

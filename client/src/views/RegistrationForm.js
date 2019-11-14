@@ -86,6 +86,8 @@ class RegistrationForm extends Component {
                 <br />
                 <Col md={{ span: 4, offset: 4 }}>
                     <Button onClick={this.register}>Register</Button>
+                    <br />
+                    <a href="login">Already Registered? Go to login</a>
                 </Col>
             </Container>      
         )

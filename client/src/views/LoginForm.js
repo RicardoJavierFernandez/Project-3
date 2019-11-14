@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import API from '../utils/API';
+import auth from '../utils/auth';
 
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
@@ -13,9 +14,14 @@ class LoginForm extends Component {
         super(props);
         this.state = {
             email:"",
-            password: ""
+            password: "",
+            invalidPassword: true
         }
     }
+
+    // componentDidMount() {
+    //     console.log(this.props);
+    // }
 
     inputChangeHandler = (e) => {
         this.setState ({[e.target.name]: e.target.value});
@@ -24,7 +30,7 @@ class LoginForm extends Component {
     login = () => {
         API.login(this.state.email, this.state.password)
             .then((session) => {
-                console.log(session);
+                this.setState({invalid: true})
                 this.props.onLogin(session.data);
             });
     };
@@ -64,9 +70,13 @@ class LoginForm extends Component {
                         placeholder="Enter your password"
                     />
                 </Col>
+                {this.state.invalidPassword && <Col md={{ span: 4, offset: 4 }}><h3>Invalid Password!</h3></Col>}
                 <br />
                 <Col md={{ span: 4, offset: 4 }}>
                 <Button disabled={!isEnabled} onClick={this.login} variant="primary">Login</Button>
+                <br />
+                <a href="register">Not Registered?</a>
+                {/* <Button disabled={!isEnabled} onClick={() => { auth.login(() => { this.props.history.push("/createorders")})}} variant="primary">Login</Button> */}
                 </Col>
             </Container>
         )
