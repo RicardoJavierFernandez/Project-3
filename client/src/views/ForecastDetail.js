@@ -21,60 +21,60 @@ class ForecastDetail extends Component {
         orderAmount: '',
         selectedProduct: '',
         products: []
+        }
     }
-}
 
-// retrieve the products in the database
-componentDidMount() {
-    API.getAllProducts()
-        .then((dbResponse) => {
-            let dbData = []
-            dbResponse.data.map((row) => {
-                dbData.push(row.product_id);
-        });
-        this.setState({products: dbData})
-    });
-}
-
-handleChange = (e) => {
-    this.setState({[e.target.name]: e.target.value});
-}
-
-// run forecast model and use output to determine the order quantity
-submitAssumptions = (e) => {
-    e.preventDefault();
-
-    if(parseFloat(this.state.unitsOrder) >= 0 && parseFloat(this.state.totalOrder) >= 0 && parseFloat(this.state.masterCarton) >= 0) {
-        let output = forecastModel.forecastOutput(
-            parseFloat(this.state.unitsOrder), 
-            parseFloat(this.state.totalOrder), 
-            parseFloat(this.state.masterCarton)
-        );
-
-        let product = document.getElementById('products');
-    
-        this.setState(
-            {
-                orderAmount: output, 
-                selectedProduct: product.options[product.selectedIndex].id
-            }, 
-            () => {
-                API.getProduct(this.state.selectedProduct).then((apiResponse)=> {
-                    if(apiResponse.data) {
-                        if(apiResponse.data.quantity > this.state.orderAmount) {
-                            this.setState({orderAmount: 0})
-                        }
-                        else {
-                            this.setState({orderAmount: (this.state.orderAmount - apiResponse.data.quantity)});
-                        }
-                    }
-                });
+    // retrieve the products in the database
+    componentDidMount() {
+        API.getAllProducts()
+            .then((dbResponse) => {
+                let dbData = []
+                dbResponse.data.map((row) => {
+                    dbData.push({product_id: row.product_id, sku: row.product_sku});
             });
+            this.setState({products: dbData})
+        });
     }
-    else {
-        this.setState({orderAmount: "Please enter valid number"});
+
+    handleChange = (e) => {
+        this.setState({[e.target.name]: e.target.value});
     }
-}
+
+    // run forecast model and use output to determine the order quantity
+    submitAssumptions = (e) => {
+        e.preventDefault();
+
+        if(parseFloat(this.state.unitsOrder) >= 0 && parseFloat(this.state.totalOrder) >= 0 && parseFloat(this.state.masterCarton) >= 0) {
+            let output = forecastModel.forecastOutput(
+                parseFloat(this.state.unitsOrder), 
+                parseFloat(this.state.totalOrder), 
+                parseFloat(this.state.masterCarton)
+            );
+
+            let product = document.getElementById('products');
+        
+            this.setState(
+                {
+                    orderAmount: output, 
+                    selectedProduct: product.options[product.selectedIndex].id
+                }, 
+                () => {
+                    API.getProduct(this.state.selectedProduct).then((apiResponse)=> {
+                        if(apiResponse.data) {
+                            if(apiResponse.data.quantity > this.state.orderAmount) {
+                                this.setState({orderAmount: 0})
+                            }
+                            else {
+                                this.setState({orderAmount: (this.state.orderAmount - apiResponse.data.quantity)});
+                            }
+                        }
+                    });
+                });
+        }
+        else {
+            this.setState({orderAmount: "Please enter valid number"});
+        }
+    }
 
     render() {
 
@@ -98,7 +98,7 @@ submitAssumptions = (e) => {
                             {this.state.products.length ? (
                                 <select id="products">
                                 {this.state.products.map((product, index) => 
-                                    <option key={index} value={product} id={product}>Product {product}</option>
+                                    <option key={index} value={product} id={product.product_id}>{product.sku}</option>
                                 )}
                                 </select>
                             ) : (<strong>No options</strong>)}

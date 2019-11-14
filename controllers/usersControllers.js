@@ -18,10 +18,10 @@ module.exports = {
         })
         .then((dbUser) => {
             if(dbUser) {
-                res.json({'message': 'Successfully logged in!'})
+                res.json({'message': 'Successfully logged in!'});
             }
             else {
-                res.json({'message': 'Email does not exist, please use a valid email. or sign up.'})
+                res.json({'message': 'Email does not exist, please use a valid email. or sign up.'});
             }
         })
         .catch((err) => {
