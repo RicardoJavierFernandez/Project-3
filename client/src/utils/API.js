@@ -7,6 +7,9 @@ const request = {
     getAllProducts: function() {
         return axios.get(`/api/products`);
     },
+    getAllProductGroups: function() {
+        return axios.get('/api/productgroups');
+    },
     getInventory: function() {
         return axios.get('api/inventory');
     },
@@ -15,6 +18,9 @@ const request = {
     },
     getAllTransactionTypes: function() {
         return axios.get('/api/transactiontypes');
+    },
+    createProduct: function(productData) {
+        return axios.post('/api/products', productData);
     },
     createOrder: function(orderData) {
         return axios.post('/api/transactions', orderData);

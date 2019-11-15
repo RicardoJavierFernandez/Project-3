@@ -17,6 +17,7 @@ class NavBar extends Component {
                 <Nav.Link href="inventory">Inventory</Nav.Link>
                 <Nav.Link href="forecast">Forecast</Nav.Link>
                 <Nav.Link href="createorder">Order</Nav.Link>
+                <Nav.Link href="createproduct">Product</Nav.Link>
                 <Nav.Link href="history">History</Nav.Link>
                 </Nav>
             </Navbar>

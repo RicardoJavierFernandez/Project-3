@@ -7,7 +7,6 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 
 
 class CreateOrder extends Component {
@@ -64,7 +63,6 @@ class CreateOrder extends Component {
             price: this.state.price
         })
         .then((dbResponse) => {
-            console.log(dbResponse);
             this.setState({price:'', quantity:''}, () => {
                 document.getElementById('price').value = "";
                 document.getElementById('quantity').value = "";
@@ -81,7 +79,7 @@ class CreateOrder extends Component {
         if(!this.props.session) {
         return (
             <div>
-                <NavBar></NavBar>
+                <NavBar />
                 <br />
                 <Container>
                     <Col md={{ span: 4, offset: 4 }}>

@@ -36,7 +36,7 @@ class Inventory extends Component {
     render() {
         return(
             <div>
-            <NavBar></NavBar>
+            <NavBar />
             <Container>
             <Col md={{ span: 4, offset: 4 }}>
                     <br />

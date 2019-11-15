@@ -6,6 +6,7 @@ import NavBar from '../components/NavBar';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
 
 
 class ForecastDetail extends Component {
@@ -82,7 +83,11 @@ class ForecastDetail extends Component {
         // if(this.props.session) {
         return(
             <div>
-            <NavBar></NavBar>
+            <NavBar />
+            <br />
+            <Col md={{ span: 4, offset: 4 }}>
+                <h2>Forecast Calculator</h2>
+            </Col>
             <br />
             <Container >
                 <Table striped bordered hover size="sm">
