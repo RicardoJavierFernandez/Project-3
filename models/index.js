@@ -19,9 +19,19 @@ else {
         config.database,
         config.username,
         config.password,
-        config
-    );
-}
+        config, {
+            dialectOptions: {
+                useUTC: false, //for reading from database
+                dateStrings: true,
+                typeCast: function (field, next) { // for reading from database
+                  if (field.type === 'DATETIME') {
+                    return field.string()
+                  }
+                    return next()
+                  },
+              }
+        }
+)} 
 
 // __dirname is equal to ModelSetup/models
 // fs.readdirSync(__dirname) is equal to the names of the files in the models folder.

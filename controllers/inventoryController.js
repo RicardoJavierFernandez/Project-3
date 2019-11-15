@@ -7,8 +7,9 @@ module.exports = {
                     p.product_sku,
                     p.product_name,
                     SUM(CASE tt.transaction_type_id
-                        when 1 then o.quantity
-                        when 2 then -o.quantity
+                        WHEN 1 THEN o.quantity
+                        WHEN 2 THEN -o.quantity
+                        WHEN 3 THEN o.quantity
                     END) quantity
                 FROM forcastly.Orders o
                 LEFT JOIN forcastly.Transactions t

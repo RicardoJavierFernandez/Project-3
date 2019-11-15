@@ -5,7 +5,7 @@ module.exports = {
         db.sequelize.query(`
                 SELECT 
                     tt.transaction_type,
-                    date_format(t.transaction_date, '%m/%d/%Y') as transaction_date,
+                    date_format(t.transaction_date, '%m/%d/%Y %H:%i:%s') as transaction_date,
                     p.product_name,
                     o.price,
                     o.quantity,

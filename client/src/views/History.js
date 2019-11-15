@@ -25,7 +25,6 @@ class Inventory extends Component {
                 dbOrders.data[0].map((row) => {
                     dbData.push(row);
                 });
-                console.log(dbData);
                 this.setState({orders: dbData}, () => console.log(this.state.orders));
             });
     }
@@ -55,7 +54,7 @@ class Inventory extends Component {
                 </thead>
                 <tbody>
                     {this.state.orders.map((order, index) =>
-                    <tr>
+                    <tr key={index}>
                     <td>{order.transaction_type}</td>
                     <td>{order.product_name}</td>
                     <td>{parseInt(order.quantity)}</td>
