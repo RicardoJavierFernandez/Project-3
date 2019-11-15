@@ -6,8 +6,7 @@ import NavBar from '../components/NavBar';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import Dropdown from 'react-bootstrap/Dropdown'
+
 
 class ForecastDetail extends Component {
     constructor(props) {
@@ -79,7 +78,7 @@ class ForecastDetail extends Component {
     }
 
     render() {
-
+        const isEnabled = this.state.unitsOrder > 0 && this.state.totalOrder > 0 && this.state.masterCarton > 0;
         // if(this.props.session) {
         return(
             <div>
@@ -133,7 +132,7 @@ class ForecastDetail extends Component {
                         </tr>
                     </tbody>
                 </Table>
-                <Button variant="success" onClick={this.submitAssumptions}>Calculate</Button>
+                <Button disabled={!isEnabled} variant="success" onClick={this.submitAssumptions}>Calculate</Button>
             </Container>
             </div>
         )

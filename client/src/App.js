@@ -2,12 +2,9 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import Nav from 'react-bootstrap/Nav';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
 
-// import Homepage from '../../client/src/containers/HomePage';
-import NavBar from '../src/components/NavBar';
 import Login from '../src/containers/loginPage'
+import HomePage from './views/HomePage';
 import Registration from '../src/containers/Registration';
 import CreateOrder from './views/CreateOrder';
 import ForecastDetail from './views/ForecastDetail';
@@ -33,9 +30,11 @@ class App extends Component {
         {/* <Route exact path ="/" component = {NavBar} /> */}
         {!this.state.session && <Route exact path ="/login" component = {()=> <Login onLogin={this.signIn} history={history}/>} />}
         {!this.state.session && <Route exact path ="/register" component = {()=> <Registration onRegister={this.signIn}/>} />}
+        {!this.state.session && <Route exact path="/home" component = {() => <HomePage session={this.state.session} />}/>}
         {!this.state.session && <Route exact path="/createorder" component = {() => <CreateOrder session={this.state.session} />}/>}
         {!this.state.session && <Route exact path="/forecast" component={ForecastDetail} session={this.state.session}/>}
         {!this.state.session && <Route exact path="/inventory" component={Inventory} session={this.state.session}/>}
+        <Route component={CreateOrder} />
         {/* <Route component = {ForecastDetail} /> */}
         {/* <Route component={() => <Inventory path="/inventory" session={this.state.session} />} />
         <Route component={() => <CreateOrder path="/createorder" session={this.state.session} />} />

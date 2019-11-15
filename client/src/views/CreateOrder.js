@@ -7,6 +7,8 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
 
 class CreateOrder extends Component {
     constructor(props) {
@@ -73,14 +75,19 @@ class CreateOrder extends Component {
     }
 
     render() {
-        // Enable boolean for the button
+        // isEnable boolean for the button
         const isEnabled = this.state.price > 0 && this.state.quantity > 0;
 
-        // if(this.props.session) {
+        if(!this.props.session) {
         return (
             <div>
                 <NavBar></NavBar>
                 <br />
+                <Col md={{ span: 4, offset: 4 }}>
+                    <Card>
+                        <Card.Body>Enter Order Below</Card.Body>
+                    </Card>
+                </Col>
                 <Container>
                     <Col md={{ span: 4, offset: 4 }}>
                     <Form>
@@ -114,9 +121,9 @@ class CreateOrder extends Component {
                         </Form.Group>
                         <Form.Group controlId="exampleForm.ControlTextarea1">
                             <Form.Label>Price</Form.Label>
-                            <Form.Control type="text" rows="1" name="price" id= "price" onChange={this.handleInputChange} />
+                            <Form.Control type="text" rows="1" name="price" id= "price" placeholder="Required Field" onChange={this.handleInputChange} />
                             <Form.Label>Quantity</Form.Label>
-                            <Form.Control type="text" rows="1" name="quantity" id="quantity" onChange={this.handleInputChange} />
+                            <Form.Control type="text" rows="1" name="quantity" id="quantity" placeholder="Required Field" onChange={this.handleInputChange} />
                         </Form.Group>
                     </Form>
                     <Button disabled={!isEnabled} variant="success" onClick={this.submitOrder}>Order Now</Button>
@@ -124,12 +131,12 @@ class CreateOrder extends Component {
                 </Container>
             </div>
         )}
-    //     else {
-    //         return (
-    //             <h3>Unauthorized Access</h3>
-    //         )
-    //     }
-    // }
+        else {
+            return (
+                <h3>Unauthorized Access</h3>
+            )
+        }
+    }
 }
 
 export default CreateOrder;

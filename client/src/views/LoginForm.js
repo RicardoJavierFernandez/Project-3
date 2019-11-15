@@ -70,7 +70,6 @@ class LoginForm extends Component {
                         placeholder="Enter your password"
                     />
                 </Col>
-                {this.state.invalidPassword && <Col md={{ span: 4, offset: 4 }}><h3>Invalid Password!</h3></Col>}
                 <br />
                 <Col md={{ span: 4, offset: 4 }}>
                 <Button disabled={!isEnabled} onClick={this.login} variant="primary">Login</Button>
