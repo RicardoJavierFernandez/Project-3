@@ -3,13 +3,61 @@ import NavBar from '../components/NavBar';
 
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import Table from 'react-bootstrap/Table';
+
+import Chart from 'react-apexcharts';
 
 
 class HomePage extends Component {
     constructor(props) {
         super(props);
-    }
+        this.state = {
+            options: {
+              colors: ['#3fc5f0'],
+              chart: {
+                id: "basic-bar"
+              },
+              title: {
+                text: 'Sales Per Month',
+                align: 'center'
+              },
+              xaxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+              },
+              yaxis: {
+                title: {
+                  text: 'Sales $ (thousands)'
+                }
+            }
+        },
+            series: [
+              {
+                name: "Sales",
+                data: [76, 67, 58, 55, 50, 60, 70, 91, 86, 82, 91, 95]
+              }
+            ],
+            options2: {
+                labels: ['Electrical', 'Grip', 'Gaffe', 'Masking'],
+                title: {
+                    text: 'Inventory by Group',
+                    align: 'center'
+                },
+                responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                    width: 0
+                    },
+                    legend: {
+                    position: 'bottom'
+                    }
+                }
+                }]
+            },
+            series2: [44, 55, 13, 43]
+        }
+}
 
     render() {
         return(
@@ -18,9 +66,38 @@ class HomePage extends Component {
             <Container>
                 <Col md={{ span: 4, offset: 4 }}>
                     <br />
-                    <h2>Home Page</h2>
+                    <h2>Dashboard</h2>
                     <br />
                 </Col>
+
+                <br />
+
+                <Row>
+                    
+                {/* Pie chart */}
+                <Col md={{span: 6, offset: 0}}>
+                    <div id="chart">
+                        <Chart 
+                            options={this.state.options2} 
+                            series={this.state.series2} 
+                            type="pie" 
+                            width="410" 
+                        />
+                    </div>
+                </Col>
+
+                {/* Line chart */}
+                <Col md={{ span: 6, offset: 0 }}>
+                    <div className="chart">
+                        <Chart
+                            options={this.state.options}
+                            series={this.state.series}
+                            type="bar"
+                            width="500"
+                        />
+                    </div>
+                </Col>
+                </Row>
                 
                 <br />
 
@@ -69,7 +146,7 @@ class HomePage extends Component {
                 <br />
 
                 <Col md={{ span: 4, offset: 4 }}>
-                    <h3>Top 5 Quantity</h3>
+                    <h3>Top 5 Best Selling</h3>
                 </Col>
                 <Table responsive="md">
                     <thead>
@@ -108,7 +185,7 @@ class HomePage extends Component {
                         <td>Table cell</td>
                     </tr>
                     </tbody>
-                </Table>
+                </Table>                
             </Container>
             </div>
 
