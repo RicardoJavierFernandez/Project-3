@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import API from '../utils/API';
-import auth from '../utils/auth';
 
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
@@ -36,7 +35,7 @@ class LoginForm extends Component {
     };
 
     render() {
-
+        // isEnable boolean for the button
         const isEnabled = this.state.email.length > 0 && this.state.password.length > 0;
 
         return (
@@ -75,7 +74,6 @@ class LoginForm extends Component {
                 <Button disabled={!isEnabled} onClick={this.login} variant="primary">Login</Button>
                 <br />
                 <a href="register">Not Registered?</a>
-                {/* <Button disabled={!isEnabled} onClick={() => { auth.login(() => { this.props.history.push("/createorders")})}} variant="primary">Login</Button> */}
                 </Col>
             </Container>
         )
