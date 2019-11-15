@@ -2,7 +2,24 @@ const db = require('../models');
 
 module.exports = {
     findAll: function(req, res) {
-        db.Inventory.findAll({})
+        db.sequelize.query(`
+                SELECT 
+                    p.product_sku,
+                    p.product_name,
+                    SUM(CASE tt.transaction_type_id
+                        when 1 then o.quantity
+                        when 2 then -o.quantity
+                    END) quantity
+                FROM forcastly.Orders o
+                LEFT JOIN forcastly.Transactions t
+                    ON o.transaction_id = t.transaction_id
+                LEFT JOIN forcastly.Products p
+                    ON p.product_id = o.product_id
+                LEFT JOIN forcastly.TransactionTypes tt
+                    ON t.transaction_type_id = tt.transaction_type_id
+                GROUP BY p.product_name, product_sku
+                ORDER BY quantity DESC;`
+            )
             .then((dbInventory) => {
                 res.json(dbInventory)
             })

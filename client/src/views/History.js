@@ -15,8 +15,8 @@ class Inventory extends Component {
         }
     }
 
-    pullInventory = () => {
-        API.getInventory()
+    pullOrders = () => {
+        API.getOrders()
             .then((dbOrders) => {
                 let dbData = []
                 // we select index 0  in the data because sequelize
@@ -31,7 +31,7 @@ class Inventory extends Component {
     }
 
     componentDidMount() {
-        this.pullInventory();
+        this.pullOrders();
     }
 
     render() {
@@ -41,25 +41,28 @@ class Inventory extends Component {
             <Container>
             <Col md={{ span: 4, offset: 4 }}>
                     <br />
-                    <h2>Inventory</h2>
+                    <h2>Order History</h2>
                     <br />
                 </Col>
                 <Table striped bordered hover>
                 <thead>
                     <tr>
-                    <th>SKU</th>
-                    <th>Product Name</th>
+                    <th>Transaction</th>
+                    <th>Product</th>
                     <th>Quantity</th>
+                    <th>Date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {this.state.orders.map((product, index) =>
+                    {this.state.orders.map((order, index) =>
                     <tr>
-                    <td>{product.product_sku}</td>
-                    <td>{product.product_name}</td>
-                    <td>{parseInt(product.quantity)}</td>
+                    <td>{order.transaction_type}</td>
+                    <td>{order.product_name}</td>
+                    <td>{parseInt(order.quantity)}</td>
+                    <td>{order.transaction_date}</td>
                     </tr>
                     )}
+
                 </tbody>
                 </Table>
             </Container>

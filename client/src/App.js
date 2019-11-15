@@ -9,6 +9,7 @@ import Registration from '../src/containers/Registration';
 import CreateOrder from './views/CreateOrder';
 import ForecastDetail from './views/ForecastDetail';
 import Inventory from './views/Inventory';
+import History from './views/History';
 
 
 class App extends Component {
@@ -27,18 +28,16 @@ class App extends Component {
     return (
         <Router>
         <Switch>
-        {/* <Route exact path ="/" component = {NavBar} /> */}
         {!this.state.session && <Route exact path ="/login" component = {()=> <Login onLogin={this.signIn} history={history}/>} />}
         {!this.state.session && <Route exact path ="/register" component = {()=> <Registration onRegister={this.signIn}/>} />}
         {!this.state.session && <Route exact path="/home" component = {() => <HomePage session={this.state.session} />}/>}
         {!this.state.session && <Route exact path="/createorder" component = {() => <CreateOrder session={this.state.session} />}/>}
         {!this.state.session && <Route exact path="/forecast" component={ForecastDetail} session={this.state.session}/>}
         {!this.state.session && <Route exact path="/inventory" component={Inventory} session={this.state.session}/>}
-        <Route component={CreateOrder} />
-        {/* <Route component = {ForecastDetail} /> */}
-        {/* <Route component={() => <Inventory path="/inventory" session={this.state.session} />} />
-        <Route component={() => <CreateOrder path="/createorder" session={this.state.session} />} />
-        <Route component={() => <ForecastDetail session={this.state.session} />}/> */}
+        {!this.state.session && <Route exact path="/history" component={History} session={this.state.session}/>}
+
+        <Route component={HomePage} />
+
         </Switch>
         </Router>
     )

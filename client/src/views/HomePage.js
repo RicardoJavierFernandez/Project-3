@@ -17,7 +17,9 @@ class HomePage extends Component {
             <NavBar></NavBar>
             <Container>
                 <Col md={{ span: 4, offset: 4 }}>
-                    <h1>Home Page</h1>
+                    <br />
+                    <h2>Home Page</h2>
+                    <br />
                 </Col>
                 
                 <br />

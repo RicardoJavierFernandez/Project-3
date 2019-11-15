@@ -83,12 +83,10 @@ class CreateOrder extends Component {
             <div>
                 <NavBar></NavBar>
                 <br />
-                <Col md={{ span: 4, offset: 4 }}>
-                    <Card>
-                        <Card.Body>Enter Order Below</Card.Body>
-                    </Card>
-                </Col>
                 <Container>
+                    <Col md={{ span: 4, offset: 4 }}>
+                        <h2>Place Order</h2>
+                    </Col>
                     <Col md={{ span: 4, offset: 4 }}>
                     <Form>
                     <Form.Group controlId="exampleForm.ControlSelect1">
