@@ -137,7 +137,7 @@ class ForecastDetail extends Component {
                         </tr>
                     </tbody>
                 </Table>
-                <Button disabled={!isEnabled} variant="success" onClick={this.submitAssumptions}>Calculate</Button>
+                <Button disabled={!isEnabled} variant="primary" onClick={this.submitAssumptions}>Calculate</Button>
             </Container>
             </div>
         )

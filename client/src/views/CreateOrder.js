@@ -122,7 +122,7 @@ class CreateOrder extends Component {
                             <Form.Control type="text" rows="1" name="quantity" id="quantity" placeholder="Required Field" onChange={this.handleInputChange} />
                         </Form.Group>
                     </Form>
-                    <Button disabled={!isEnabled} variant="success" onClick={this.submitOrder}>Order Now</Button>
+                    <Button disabled={!isEnabled} variant="primary" onClick={this.submitOrder}>Order Now</Button>
                     </Col>
                 </Container>
             </div>

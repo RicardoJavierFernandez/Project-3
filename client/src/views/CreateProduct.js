@@ -112,7 +112,7 @@ class CreateProduct extends Component {
                         <Form.Control type="text" rows="1" name="masterCarton" id="masterCarton" placeholder="Required Field, must be a number" onChange={this.handleInputChange} />
                     </Form.Group>
                 </Form>
-                <Button disabled={!isEnabled} variant="success" onClick={this.submitProduct}>Create Product</Button>
+                <Button disabled={!isEnabled} variant="primary" onClick={this.submitProduct}>Create Product</Button>
                 </Col>
             </Container>
             </div>

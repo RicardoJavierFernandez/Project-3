@@ -25,6 +25,16 @@ const request = {
     createOrder: function(orderData) {
         return axios.post('/api/transactions', orderData);
     },
+    createGroup: function(groupName) {
+        return axios.post('/api/productgroups', {
+            group_name: groupName
+        })
+    },
+    updateGroup: function(groupInfo) {
+        return axios.put('/api/productgroups/' + groupInfo.group_id, {
+            group_name: groupInfo.name
+        });
+    },
     login: function(email, password) {
         return axios.post('/api/users/login', {
             email: email,
