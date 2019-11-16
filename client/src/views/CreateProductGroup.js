@@ -66,7 +66,8 @@ class CreateProductGroup extends Component {
     }
 
     changeInputBox = (e) => {
-        console.log(document.getElementById(e.target.id).getAttribute('type'));
+        // console.log(document.getElementById(e.target).firstElementChild);
+        console.log('Change input box.');
     }
 
     componentDidMount() {
