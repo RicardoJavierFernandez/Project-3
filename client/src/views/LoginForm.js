@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
 import API from '../utils/API';
 
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Jumbotron from 'react-bootstrap/Jumbotron';
+import {Container, Col, Form, Button, Jumbotron} from 'react-bootstrap';
 
 
 class LoginForm extends Component {

@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import NavBar from '../components/NavBar';
 
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Table from 'react-bootstrap/Table';
+import {Container, Col, Row, Table} from 'react-bootstrap/';
 
 import Chart from 'react-apexcharts';
 
