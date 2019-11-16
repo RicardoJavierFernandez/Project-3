@@ -3,10 +3,7 @@ import API from '../utils/API';
 import forecastModel from '../utils/forecastingModel';
 import NavBar from '../components/NavBar';
 
-import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
+import {Table, Button, Container, Col} from 'react-bootstrap';
 
 
 class ForecastDetail extends Component {

@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
 import API from '../../../src/utils/API';
 
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Jumbotron from 'react-bootstrap/Jumbotron';
+import {Form, Button, Container, Col, Jumbotron} from 'react-bootstrap';
 
 import './styles.css';
 
@@ -89,7 +85,7 @@ class RegistrationForm extends Component {
                     <br />
                     <a href="login">Already Registered? Go to login</a>
                 </Col>
-            </Container>      
+            </Container>   
         )
     }
 }

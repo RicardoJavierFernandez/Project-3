@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import NavBar from '../components/NavBar';
 import API from '../utils/API';
 
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Table from 'react-bootstrap/Table';
+import {Container, Col, Table} from 'react-bootstrap';
 
 
 class Inventory extends Component {

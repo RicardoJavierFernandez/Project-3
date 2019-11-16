@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import API from '../utils/API';
 
 import NavBar from '../components/NavBar';
-import Form from 'react-bootstrap/Form';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Table from 'react-bootstrap/Table';
+
+import {Form, Container, Col, Button, Table} from 'react-bootstrap';
 
 
 class CreateProductGroup extends Component {
