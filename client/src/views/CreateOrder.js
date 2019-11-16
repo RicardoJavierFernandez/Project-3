@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import API from '../utils/API';
 
+import NavBar from '../components/NavBar';
+
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+
 
 class CreateOrder extends Component {
     constructor(props) {
@@ -60,7 +63,6 @@ class CreateOrder extends Component {
             price: this.state.price
         })
         .then((dbResponse) => {
-            console.log(dbResponse);
             this.setState({price:'', quantity:''}, () => {
                 document.getElementById('price').value = "";
                 document.getElementById('quantity').value = "";
@@ -71,11 +73,18 @@ class CreateOrder extends Component {
     }
 
     render() {
-        // Enable boolean for the button
+        // isEnable boolean for the button
         const isEnabled = this.state.price > 0 && this.state.quantity > 0;
+
+        if(!this.props.session) {
         return (
             <div>
+                <NavBar />
+                <br />
                 <Container>
+                    <Col md={{ span: 4, offset: 4 }}>
+                        <h2>Place Order</h2>
+                    </Col>
                     <Col md={{ span: 4, offset: 4 }}>
                     <Form>
                     <Form.Group controlId="exampleForm.ControlSelect1">
@@ -108,16 +117,21 @@ class CreateOrder extends Component {
                         </Form.Group>
                         <Form.Group controlId="exampleForm.ControlTextarea1">
                             <Form.Label>Price</Form.Label>
-                            <Form.Control type="text" rows="1" name="price" id= "price" onChange={this.handleInputChange} />
+                            <Form.Control type="text" rows="1" name="price" id= "price" placeholder="Required Field" onChange={this.handleInputChange} />
                             <Form.Label>Quantity</Form.Label>
-                            <Form.Control type="text" rows="1" name="quantity" id="quantity" onChange={this.handleInputChange} />
+                            <Form.Control type="text" rows="1" name="quantity" id="quantity" placeholder="Required Field" onChange={this.handleInputChange} />
                         </Form.Group>
                     </Form>
-                    <Button disabled={!isEnabled} variant="success" onClick={this.submitOrder}>Order Now</Button>
+                    <Button disabled={!isEnabled} variant="primary" onClick={this.submitOrder}>Order Now</Button>
                     </Col>
                 </Container>
             </div>
-        )
+        )}
+        else {
+            return (
+                <h3>Unauthorized Access</h3>
+            )
+        }
     }
 }
 

@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import API from '../utils/API';
 import forecastModel from '../utils/forecastingModel';
+import NavBar from '../components/NavBar';
 
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import Dropdown from 'react-bootstrap/Dropdown'
+import Col from 'react-bootstrap/Col';
+
 
 class ForecastDetail extends Component {
     constructor(props) {
@@ -32,7 +33,8 @@ class ForecastDetail extends Component {
                 dbResponse.data.map((row) => {
                     dbData.push({product_id: row.product_id, sku: row.product_sku});
             });
-            this.setState({products: dbData})
+            this.setState({products: dbData});
+            
         });
     }
 
@@ -77,8 +79,16 @@ class ForecastDetail extends Component {
     }
 
     render() {
-
+        const isEnabled = this.state.unitsOrder > 0 && this.state.totalOrder > 0 && this.state.masterCarton > 0;
+        // if(this.props.session) {
         return(
+            <div>
+            <NavBar />
+            <br />
+            <Col md={{ span: 4, offset: 4 }}>
+                <h2>Forecast Calculator</h2>
+            </Col>
+            <br />
             <Container >
                 <Table striped bordered hover size="sm">
                     <thead>
@@ -102,23 +112,6 @@ class ForecastDetail extends Component {
                                 )}
                                 </select>
                             ) : (<strong>No options</strong>)}
-                            
-                            {/*<DropdownButton
-                                size="sm"
-                                variant="secondary"
-                                title="Select Product"
-                                id={`dropdown-button-drop-${1}`}
-                                key={1}
-                            >
-                            {this.state.products.length ? (
-                                <select id="products">
-                                this.state.products.map((product, index) => 
-                                    <Dropdown.Item key={index} eventKey={product} id={product}>Product {product}</Dropdown.Item>
-                                    <option key={index} value={product} id={product}>Product {product}</option>
-                                )
-                                </select>
-                            ) : (<strong>No Products</strong>)
-                            </DropdownButton>*/}
                         </td>
                         <td>
                             <input type="text" name="unitsOrder"placeholder="Units Ordered" onChange={this.handleChange}></input>
@@ -144,11 +137,15 @@ class ForecastDetail extends Component {
                         </tr>
                     </tbody>
                 </Table>
-                <Button variant="success" onClick={this.submitAssumptions}>Calculate</Button>
+                <Button disabled={!isEnabled} variant="primary" onClick={this.submitAssumptions}>Calculate</Button>
             </Container>
-
+            </div>
         )
     }
+    // else {
+    //     return <div><h2>Unauthorized Access</h2></div>
+    // }
+// }
 }
 
 export default ForecastDetail;

@@ -1,15 +1,11 @@
 import React, {Component} from 'react';
-import LoginForm from '.../../components/LoginForm'
+import LoginForm from '../../views/LoginForm';
 
 
-class login extends Component
-{
-render ()
-{
-    return <LoginForm onLogin ={this.props.onlogin} />
-
-
+class Login extends Component {
+    render() {
+        return <LoginForm onLogin={this.props.onLogin} history={this.props.history}/>
+    }
 }
 
-}
 export default Login;

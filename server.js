@@ -12,7 +12,7 @@ app.use(express.json());
 var syncOptions = { force: false }; // change to true if we want to override the current database
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('public'));
+    app.use(express.static('client/build'));
     syncOptions.force = true;
 }
 
