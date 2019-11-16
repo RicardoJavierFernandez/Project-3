@@ -1,61 +1,97 @@
 import React, {Component} from 'react';
-import RegistrationForm from 'components/RegistrationForm'
-import Api from '../..utils/api'
+import API from '../../../src/utils/API';
+
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+
+import './styles.css';
 
 
-class LoginFrorm extends Component
-{
-    constructor (props)
-    {
+class RegistrationForm extends Component {
+    constructor (props) {
         super(props);
-        this.state={
+
+        this.state = {
             name:"",
             email:"",
             password: ""
-
         }
     }
-    inputChangeHandler=(e) =>this.setState ({[e.target.name]:e.targe.value}); 
+
+    inputChangeHandler = (e) => {
+        this.setState({[e.target.name]: e.target.value});
+    }
     
-    register =()=> {
-Api.register(this.state.name,
-    this.state.password) .then ( 
-    session => {
-        dedugger;
-        this.props.onRegister(
-        session.data);
-
-
-    })
+    register = () => {
+        API.registerUser(this.state.name, this.state.email.toLowerCase(), this.state.password)
+            .then((session) => {
+                this.props.onRegister(session.data);
+            });
     }
 
-    render ()
-    {
-        return <div className = "row">
-         <div className = "col-6 offset -3">
-             <h1> Register </h1>
-             <div clasName ="form-group">
-                 <input
-                 onChange={this.inputChangeHandler}
-                 value= {this.state.name}
-                 type= "text"
-                 name= "name"
-                 placeholder= "Enter your email"/>
+    render () {
+        // isEnable boolean for the button
+        const isEnabled = this.state.name.length > 0 && this.state.email.length > 0 && this.state.password.length > 0;
+        
+        return (
+            <Container>
+                <Jumbotron>
+                    <Container>
+                        <h2>Registration Form</h2>
+                        <p>Enter your information below</p>
+                    </Container>
+                </Jumbotron>
+                <Col md={{ span: 4, offset: 4 }}>
+                    <Form.Control 
+                        type="text" 
+                        rows="1" 
+                        value={this.state.name} 
+                        name="name" 
+                        id= "name" 
+                        placeholder="Enter your Name" 
+                        onChange={this.inputChangeHandler} 
+                    />
+                </Col>
+                
+                <br />
+                
+                <Col md={{ span: 4, offset: 4 }}>
+                    <Form.Control 
+                        type="text" 
+                        rows="1" 
+                        value={this.state.email} 
+                        name="email" 
+                        id="email" 
+                        placeholder="Enter your email address" 
+                        onChange={this.inputChangeHandler} 
+                    />
+                </Col>
+                
+                <br />
 
-                  <input
-                    onChange={this.inputChangeHandler}
-                    value= {this.state.password}
-                 type= "password"
-                 name= "password"
-                 placeholder= "Enter your password"/>
-                 <button  onClick = {this.register} className = "btn btn-primary">Register</button>   
-
-
-             </div>
-
-         </div>
-
-        </div>
+                <Col md={{ span: 4, offset: 4 }}>
+                    <Form.Control 
+                        type="password" 
+                        rows="1" 
+                        value={this.state.password} 
+                        name="password" 
+                        id="password" 
+                        placeholder="Enter your password" 
+                        onChange={this.inputChangeHandler} 
+                    />
+                </Col>
+                <br />
+                <Col md={{ span: 4, offset: 4 }}>
+                    <Button disabled={!isEnabled} onClick={this.register}>Register</Button>
+                    <br />
+                    <a href="login">Already Registered? Go to login</a>
+                </Col>
+            </Container>      
+        )
     }
 }
-export default RegistrationFrom;
+
+export default RegistrationForm;

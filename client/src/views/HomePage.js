@@ -104,13 +104,9 @@ class HomePage extends Component {
                 <Col md={{ span: 4, offset: 4 }}>
                     <h3>Top 5 Revenue</h3>
                 </Col>
-                <Table responsive="sm">
+                <Table striped bordered responsive="sm" size="sm">
                     <thead>
                     <tr>
-                        <th>Table heading</th>
-                        <th>Table heading</th>
-                        <th>Table heading</th>
-                        <th>Table heading</th>
                         <th>Table heading</th>
                         <th>Table heading</th>
                     </tr>
@@ -119,24 +115,12 @@ class HomePage extends Component {
                     <tr>
                         <td>Table cell</td>
                         <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
                     </tr>
                     <tr>
                         <td>Table cell</td>
                         <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
                     </tr>
                     <tr>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
                         <td>Table cell</td>
                         <td>Table cell</td>
                     </tr>
@@ -145,16 +129,12 @@ class HomePage extends Component {
 
                 <br />
 
-                <Col md={{ span: 4, offset: 4 }}>
+                <Col md={{ span: 3, offset: 4 }}>
                     <h3>Top 5 Best Selling</h3>
                 </Col>
-                <Table responsive="md">
+                <Table striped bordered responsive="md" size="sm">
                     <thead>
                     <tr>
-                        <th>Table heading</th>
-                        <th>Table heading</th>
-                        <th>Table heading</th>
-                        <th>Table heading</th>
                         <th>Table heading</th>
                         <th>Table heading</th>
                     </tr>
@@ -163,24 +143,12 @@ class HomePage extends Component {
                     <tr>
                         <td>Table cell</td>
                         <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
                     </tr>
                     <tr>
                         <td>Table cell</td>
                         <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
                     </tr>
                     <tr>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
                         <td>Table cell</td>
                         <td>Table cell</td>
                     </tr>
